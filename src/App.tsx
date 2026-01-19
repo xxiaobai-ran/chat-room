@@ -8,6 +8,8 @@ import {
 } from '@ant-design/icons';
 import type { MenuProps } from 'antd';
 import { Breadcrumb, Layout, Menu, theme } from 'antd';
+import { UserInfo } from './components/userInfo';
+import { ChatRoom } from './components/chatRoom';
 
 const { Header, Content, Footer, Sider } = Layout;
 
@@ -28,7 +30,7 @@ function getItem(
 }
 
 const items: MenuItem[] = [
-    getItem('Option 1', '1', <PieChartOutlined />),
+    getItem('Chat Room', '1', <PieChartOutlined />),
     getItem('Option 2', '2', <DesktopOutlined />),
     getItem('User', 'sub1', <UserOutlined />, [
         getItem('Tom', '3'),
@@ -45,7 +47,7 @@ const items: MenuItem[] = [
 const App: React.FC = () => {
     const [collapsed, setCollapsed] = useState(false);
     const {
-        token: { colorBgContainer, borderRadiusLG },
+        token: { colorBgContainer },
     } = theme.useToken();
 
     return (
@@ -56,6 +58,7 @@ const App: React.FC = () => {
                 onCollapse={(value) => setCollapsed(value)}
             >
                 <div className="demo-logo-vertical" />
+                <UserInfo />
                 <Menu
                     theme="dark"
                     defaultSelectedKeys={['1']}
@@ -70,16 +73,7 @@ const App: React.FC = () => {
                         style={{ margin: '16px 0' }}
                         items={[{ title: 'User' }, { title: 'Bill' }]}
                     />
-                    <div
-                        style={{
-                            padding: 24,
-                            minHeight: 360,
-                            background: colorBgContainer,
-                            borderRadius: borderRadiusLG,
-                        }}
-                    >
-                        Bill is a cat.
-                    </div>
+                    <ChatRoom />
                 </Content>
                 <Footer style={{ textAlign: 'center' }}>
                     Ant Design ©{new Date().getFullYear()} Created by Ant UED
