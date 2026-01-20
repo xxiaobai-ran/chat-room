@@ -9,7 +9,7 @@ import {
 import type { MenuProps } from 'antd';
 import { Breadcrumb, Layout, Menu, theme } from 'antd';
 import { UserInfo } from './components/userInfo';
-import { ChatRoom } from './components/chatRoom';
+import ChatRoom from './components/chatRoom';
 
 const { Header, Content, Footer, Sider } = Layout;
 
